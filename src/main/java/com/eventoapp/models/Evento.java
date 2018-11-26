@@ -1,10 +1,13 @@
 package com.eventoapp.models;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Evento implements Serializable {
@@ -15,10 +18,17 @@ public class Evento implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private              Long id;
 
+    @NotNull
     private String nome;
+    @NotNull
     private String local;
+    @NotNull
     private String data;
+    @NotNull
     private String horario;
+
+    @OneToMany
+    private List<Convidado> convidados;
 
     public Long getId() {
         return id;
@@ -59,4 +69,6 @@ public class Evento implements Serializable {
     public void setHorario(String horario) {
         this.horario = horario;
     }
+
+
 }
