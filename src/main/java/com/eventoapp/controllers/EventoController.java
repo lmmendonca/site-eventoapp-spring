@@ -79,5 +79,12 @@ public class EventoController {
         return "redirect:/" + id;
     }
 
+    @RequestMapping("/deletarEvento")
+    public String deletarEvento(long id){
+        Evento evento = eventoRepository.findById(id);
+        eventoRepository.delete(evento);
+        return "redirect:/eventos";
+    }
+
 
 }
